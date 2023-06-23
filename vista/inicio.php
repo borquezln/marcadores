@@ -45,9 +45,9 @@
                 <select name="categoria" required>
                     <option value="" selected>Seleccione...</option>
                     <?php
-                    foreach ($listMapas as $mapa) {
+                    foreach (array_keys($listMapas) as $key) {
                     ?>
-                        <option value="<?= $mapa ?>"><?= $mapa ?></option>
+                        <option value="<?= $key ?>"><?= $listMapas[$key] ?></option>
                     <?php
                     }
                     ?>
