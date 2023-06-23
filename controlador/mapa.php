@@ -2,16 +2,16 @@
 session_start();
 if (time() - $_SESSION["time"] < 600) {
     $_SESSION["time"] = time();
-    require "modelo/Consultas.php";
+    require "../modelo/Consultas.php";
     $co = new Consultas;
 
     if ($_SESSION["tipoUsuario"] == 1) {
         $categoria = $_POST["categoria"];
         $marcadores = $co->listarMarcadores($categoria);
-        require "vista/mapa.php";
+        require "../vista/mapa.php";
     } else {
-        abort(403);
+        header("Location: 403.php");
     }
 } else {
-    header("Location: sesion-vencida");
+    header("Location: sesion-vencida.php");
 }

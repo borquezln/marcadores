@@ -10,4 +10,4 @@ if ($co->resetPassword($dni)) {
 } else {
     $_SESSION["resetErr"] = true;
 }
-header("Location: /password");
+header("Location: password.php");

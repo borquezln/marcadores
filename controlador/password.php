@@ -1,3 +1,3 @@
 <?php
 session_start();
-require "vista/password.php";
+require "../vista/password.php";

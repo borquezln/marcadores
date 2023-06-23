@@ -8,7 +8,7 @@ if (time() - $_SESSION["time"] < 600) {
         "Puestos"
     ];
 
-    require "vista/inicio.php";
+    require "../vista/inicio.php";
 } else {
-    header("Location: sesion-vencida");
+    header("Location: sesion-vencida.php");
 }

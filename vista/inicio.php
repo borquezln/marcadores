@@ -31,16 +31,16 @@
         }
         ?>
 
-        <h3><a href="/crear-cartel">Crear cartel</a></h3>
+        <h3><a href="../controlador/crear-cartel.php">Crear cartel</a></h3>
 
-        <h3><a href="/crear-puesto">Crear puesto</a></h3>
+        <h3><a href="../controlador/crear-puesto.php">Crear puesto</a></h3>
 
         <?php
         if ($_SESSION["tipoUsuario"] == 1) {
         ?>
-            <h3><a href="/usuarios">Administración de usuarios</a></h3>
+            <h3><a href="../controlador/usuarios.php">Administración de usuarios</a></h3>
 
-            <form method="post" action="mapa">
+            <form method="post" action="../controlador/mapa.php">
                 <h3>Elegir tipo de mapa</h3>
                 <select name="categoria" required>
                     <option value="" selected>Seleccione...</option>

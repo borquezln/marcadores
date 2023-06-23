@@ -10,7 +10,7 @@
 <body>
     <main>
         <p>Usted no puede acceder a la página que está buscando.
-            Regrese al <a href="inicio">panel de inicio</a></p>
+            Regrese al <a href="../controlador/inicio.php">panel de inicio</a></p>
     </main>
 </body>
 

@@ -20,7 +20,7 @@ if (time() - $_SESSION["time"] < 600) {
     } else {
         $_SESSION["creadoErr"] = true;
     }
-    header("Location: /inicio");
+    header("Location: inicio.php");
 } else {
-    header("Location: sesion-vencida");
+    header("Location: sesion-vencida.php");
 }

@@ -17,7 +17,7 @@ if ($co->autenticarUsuario($dni, $password)) {
     $_SESSION["estadoUsuario"] = $co->listarDatoUsuario($dni, "estado_usuario");
 
     if ($_SESSION["estadoUsuario"] == 1) {
-        header("Location: /inicio");
+        header("Location: inicio.php");
     } else {
         $_SESSION["noAuto"] = true;
         header("Location: /");

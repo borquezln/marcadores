@@ -29,7 +29,7 @@
             <h2>Resetear contraseña</h2>
         </header>
         <main>
-            <form action="controlador/password-form.php" method="post">
+            <form action="../controlador/password-form.php" method="post">
                 <p>Ingrese su DNI para resetear su contraseña</p>
                 <div>
                     <label for="dni">

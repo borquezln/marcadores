@@ -14,4 +14,4 @@ if ($co->registrarUsuario($dni, $nombre, $apellido, $mail, $password)) {
 } else {
     $_SESSION["registradoErr"] = true;
 }
-header("Location: /registro");
+header("Location: registro.php");

@@ -2,4 +2,4 @@
 session_start();
 session_destroy();
 
-require "vista/sesion-vencida.php";
+require "../vista/sesion-vencida.php";

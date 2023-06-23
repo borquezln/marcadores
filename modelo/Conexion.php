@@ -5,7 +5,7 @@ class Conexion
     public function conexionBD()
     {
         try {
-            $this->link = new mysqli("localhost", "root", "", "marcadores", 3306, "utf8mb4");
+            $this->link = new mysqli("localhost", "root", "", "marcadores", 3306);
         } catch (Exception $e) {
             die("Error" . $e->getMessage());
         }

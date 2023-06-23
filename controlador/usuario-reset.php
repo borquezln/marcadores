@@ -12,7 +12,7 @@ if (time() - $_SESSION["time"] < 600) {
         $_SESSION["resetErr"] = true;
     }
 
-    header("Location: /usuarios");
+    header("Location: usuarios.php");
 } else {
-    header("Location: sesion-vencida");
+    header("Location: sesion-vencida.php");
 }

@@ -9,7 +9,8 @@
 
 <body>
     <main>
-        <p>La página que está buscando no existe. Regrese al <a href="inicio">panel de inicio</a></p>
+        <p>La página que está buscando no existe.
+            Regrese al <a href="../controlador/inicio.php">panel de inicio</a></p>
     </main>
 </body>
 

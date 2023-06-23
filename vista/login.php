@@ -30,7 +30,7 @@
             unset($_SESSION["errLogin"]);
         }
         ?>
-        <form action="controlador/login-form.php" method="post">
+        <form action="../controlador/login-form.php" method="post">
             <h4>Acceder</h4>
             <p>Ingrese sus credenciales para acceder</p>
 
@@ -44,7 +44,7 @@
             <div>
                 <label for="password">
                     Contraseña:<br>
-                    <input type="password" name="password" id="password" placeholder="Contraseña">
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
                 </label>
             </div>
             <br>
@@ -52,9 +52,9 @@
                 <button type="submit">Acceder</button>
             </div>
             <br>
-            <a href="password">Olvidé mi contraseña</a>
+            <a href="../controlador/password.php">Olvidé mi contraseña</a>
             <br>
-            <a href="registro">Registrarme</a>
+            <a href="../controlador/registro.php">Registrarme</a>
         </form>
     </main>
 </body>
