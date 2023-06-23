@@ -5,7 +5,7 @@ Los usuarios del sistema pueden crear dos tipos de marcadores distintos desde fo
 
 Por su parte, el mapa puede mostrar tres tipos de marcadores, siendo posible crear el tercero de ellos únicamente desde la base de datos. La categoría a mostrar se elige desde el panel de usuario después de iniciar sesión. 
 
-Además hay también una página para la administración de usuarios que permite activaar cuentas recientemente registradas y resetear contraseñas. El mapa y la administración de usuarios se encuentran visible solamente para administradores.
+Además hay también una página para la administración de usuarios que permite activar cuentas recientemente registradas, resetear contraseñas y transformar usuarios comunes en administradores. El mapa y la administración de usuarios se encuentran visible solamente para administradores.
 
 Además del formulario de inicio de sesión, el sistema cuenta con un formulario de registro, un formulario para solicitar el reinicio de la contraseña y un cierre de sesión por inactividad.
 
@@ -16,7 +16,7 @@ Users can create two different types of markers from forms that impact different
 
 For its part, the map can show three types of markers, and it is possible to create the third one only from the database. The category to display is chosen from the user panel after logging in.
 
-Also, there is also a user management page that allows to activate newly accounts and reset passwords. The map and user administration are only visible to administrators.
+Also, there is also a page for user management that allows to activate newly accounts, reset passwords and turn a regular user into an admin.
 
 In addition to the login form, the system has a registration form, a password reset request form, and a logout for inactivity.
 

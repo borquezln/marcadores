@@ -88,13 +88,26 @@ class Consultas extends Conexion
         }
     }
 
+    public function hacerAdmin($dni)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "UPDATE usuarios SET tipo_usuario = 1
+                    WHERE dni = $dni";
+            $result = mysqli_query($link, $sql);
+            return $result;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
     public function listarUsuarios()
     {
         try {
             $link = parent::conexionBD();
-            $sql = "SELECT u.dni, u.nombre, u.apellido, u.mail, u.inicio_sesion, eu.nombre as estado_usuario, u.estado_password
-                    FROM usuarios u, estado_usuario eu
-                    WHERE u.estado_usuario = eu.id_estado_usuario
+            $sql = "SELECT u.dni, u.nombre, u.apellido, u.mail, u.inicio_sesion, tu.tipo as tipo_usuario, eu.nombre as estado_usuario, u.estado_password
+                    FROM usuarios u, estado_usuario eu, tipo_usuario tu
+                    WHERE u.estado_usuario = eu.id_estado_usuario AND u.tipo_usuario = tu.id_tipo_usuario
                     ORDER BY u.dni";
             $result = mysqli_query($link, $sql);
             $lista = [];

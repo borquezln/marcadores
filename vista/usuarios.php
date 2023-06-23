@@ -31,6 +31,7 @@
                     <th>Apellido</th>
                     <th>Correo</th>
                     <th>Último acceso</th>
+                    <th>Tipo de usuario</th>
                     <th>Estado usuario</th>
                     <th>Estado contraseña</th>
                 </tr>
@@ -52,6 +53,19 @@
                                 echo $ultimologin;
                             } else {
                                 echo $usuario["inicio_sesion"];
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $usuario["tipo_usuario"];
+                            if ($usuario["tipo_usuario"] == "Usuario") {
+                            ?>
+                                <form method="post" action="../controlador/usuario-admin.php">
+                                    <input type="hidden" name="dni" value="<?= $usuario['dni'] ?>">
+                                    <input type="submit" value="Hacer administrador">
+                                </form>
+                            <?php
                             }
                             ?>
                         </td>
