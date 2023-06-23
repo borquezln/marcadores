@@ -9,20 +9,20 @@
 
 <body>
     <?php
-    if (isset($_SESSION['reseteado'])) {
+    if (isset($_SESSION["reseteado"])) {
     ?>
         <div>
             <p>Si su DNI se encuentra en nuestra base de datos, recibirá un correo a la brevedad con su nueva contraseña.</p>
             <a href="/">Volver al inicio</a>
         </div>
         <?php
-        unset($_SESSION['reseteado']);
+        unset($_SESSION["reseteado"]);
     } else {
-        if (isset($_SESSION['resetErr'])) {
+        if (isset($_SESSION["resetErr"])) {
         ?>
             <p>Hubo problemas al resetear su contraseña. Inténtelo nuevamente.</p>
         <?php
-            unset($_SESSION['resetErr']);
+            unset($_SESSION["resetErr"]);
         }
         ?>
         <header>

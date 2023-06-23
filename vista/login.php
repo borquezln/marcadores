@@ -14,20 +14,20 @@
 
     <main>
         <?php
-        if (isset($_SESSION['noAuto'])) {
+        if (isset($_SESSION["noAuto"])) {
         ?>
             <div>
                 <p>Su cuenta no está dada de alta. Será informado cuando pueda ingresar</p>
             </div>
         <?php
-            unset($_SESSION['noAuto']);
-        } else if (isset($_SESSION['errLogin'])) {
+            unset($_SESSION["noAuto"]);
+        } else if (isset($_SESSION["errLogin"])) {
         ?>
             <div>
                 <p>Datos Erróneos. Ingrese nuevamente</p>
             </div>
         <?php
-            unset($_SESSION['errLogin']);
+            unset($_SESSION["errLogin"]);
         }
         ?>
         <form action="controlador/login-form.php" method="post">

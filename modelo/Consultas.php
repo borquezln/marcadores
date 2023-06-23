@@ -27,7 +27,7 @@ class Consultas extends Conexion
     {
         try {
             $link = parent::conexionBD();
-            $sql = "UPDATE usuarios SET inicioSesion = now()
+            $sql = "UPDATE usuarios SET inicio_sesion = now()
                     WHERE dni = $dni";
             $result = mysqli_query($link, $sql);
             return $result;
@@ -50,11 +50,37 @@ class Consultas extends Conexion
         }
     }
 
+    public function activar($dni)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "UPDATE usuarios SET estado_usuario = 1 WHERE dni = $dni";
+            $result = mysqli_query($link, $sql);
+            return $result;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
     public function resetPassword($dni)
     {
         try {
             $link = parent::conexionBD();
-            $sql = "UPDATE usuarios SET estado_password = 'Resetear' WHERE dni = $dni";
+            $sql = "UPDATE usuarios SET estado_password = 'No activa' WHERE dni = $dni";
+            $result = mysqli_query($link, $sql);
+            return $result;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function resetear($dni)
+    {
+        try {
+            $passFuerte = password_hash("Sistema2023", PASSWORD_DEFAULT);
+            $link = parent::conexionBD();
+            $sql = "UPDATE usuarios SET estado_password = 'Activa', password = '$passFuerte'
+                    WHERE dni = $dni";
             $result = mysqli_query($link, $sql);
             return $result;
         } catch (Exception $e) {
@@ -66,7 +92,10 @@ class Consultas extends Conexion
     {
         try {
             $link = parent::conexionBD();
-            $sql = "SELECT * FROM usuarios";
+            $sql = "SELECT u.dni, u.nombre, u.apellido, u.mail, u.inicio_sesion, eu.nombre as estado_usuario, u.estado_password
+                    FROM usuarios u, estado_usuario eu
+                    WHERE u.estado_usuario = eu.id_estado_usuario
+                    ORDER BY u.dni";
             $result = mysqli_query($link, $sql);
             $lista = [];
             $i = 0;
@@ -84,8 +113,9 @@ class Consultas extends Conexion
     {
         try {
             $link = parent::conexionBD();
-            $sql = "SELECT * FROM usuarios
-                    WHERE dni = $dni";
+            $sql = "SELECT u.dni, u.nombre, u.apellido, u.mail, u.inicio_sesion, eu.nombre as estado_usuario, u.estado_password
+                    FROM usuarios u, estado_usuario eu
+                    WHERE u.estado_usuario = eu.id_estado_usuario AND dni = $dni";
             $result = mysqli_query($link, $sql);
             $row = mysqli_fetch_assoc($result);
             return $row;

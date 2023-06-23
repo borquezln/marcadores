@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `apellido` varchar(20) NOT NULL DEFAULT '',
   `mail` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(100) NOT NULL DEFAULT '',
-  `inicioSesion` datetime DEFAULT NULL,
+  `inicio_sesion` datetime DEFAULT NULL,
   `tipo_usuario` int(2) NOT NULL DEFAULT 2,
   `estado_usuario` int(2) NOT NULL DEFAULT 2,
   `estado_password` varchar(50) NOT NULL,

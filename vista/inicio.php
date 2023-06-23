@@ -9,25 +9,25 @@
 
 <body>
     <header>
-        <h2>Bienvenido/a <?= $_SESSION['nombre'] . " " . $_SESSION['apellido'] ?></h2>
+        <h2>Bienvenido/a <?= $_SESSION["nombre"] . " " . $_SESSION["apellido"] ?></h2>
     </header>
 
     <main>
         <?php
-        if (isset($_SESSION['creadoOk'])) {
+        if (isset($_SESSION["creadoOk"])) {
         ?>
             <div>
                 <p>Marcador creado correctamente</p>
             </div>
         <?php
-            unset($_SESSION['creadoOk']);
-        } else if (isset($_SESSION['creadoErr'])) {
+            unset($_SESSION["creadoOk"]);
+        } else if (isset($_SESSION["creadoErr"])) {
         ?>
             <div>
                 <p>Hubo problemas al crear su marcador. Inténtelo nuevamente.</p>
             </div>
         <?php
-            unset($_SESSION['creadoErr']);
+            unset($_SESSION["creadoErr"]);
         }
         ?>
 
@@ -36,8 +36,10 @@
         <h3><a href="/crear-puesto">Crear puesto</a></h3>
 
         <?php
-        if ($_SESSION['tipoUsuario'] == 1) {
+        if ($_SESSION["tipoUsuario"] == 1) {
         ?>
+            <h3><a href="/usuarios">Administración de usuarios</a></h3>
+
             <form method="post" action="mapa">
                 <h3>Elegir tipo de mapa</h3>
                 <select name="categoria" required>
@@ -45,13 +47,12 @@
                     <?php
                     foreach ($listMapas as $mapa) {
                     ?>
-                        <option value="<?= $mapa; ?>"><?= $mapa; ?></option>
+                        <option value="<?= $mapa ?>"><?= $mapa ?></option>
                     <?php
                     }
                     ?>
                 </select>
-                </br>
-                <input type="submit" value="Buscar" name="buscar_cat">
+                <input type="submit">
             </form>
         <?php
         }

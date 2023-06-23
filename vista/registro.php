@@ -9,12 +9,12 @@
 
 <body>
     <?php
-    if (isset($_SESSION['registrado'])) {
+    if (isset($_SESSION["registrado"])) {
     ?>
         <p>Su solicitud de registro ha sido enviada. Pronto recibirá un correo a la brevedad confirmando que puede usar su cuenta.</p>
         <a href="/">Volver al inicio</a>
     <?php
-        unset($_SESSION['registrado']);
+        unset($_SESSION["registrado"]);
     } else {
     ?>
         <header>
@@ -24,13 +24,13 @@
         </header>
         <main>
             <?php
-            if (isset($_SESSION['registroErr'])) {
+            if (isset($_SESSION["registroErr"])) {
             ?>
                 <div>
                     <p>Hubo problemas al registrarse. Inténtelo nuevamente.</p>
                 </div>
             <?php
-                unset($_SESSION['registroErr']);
+                unset($_SESSION["registroErr"]);
             }
             ?>
             <form action="../controlador/registro-form.php" method="post">

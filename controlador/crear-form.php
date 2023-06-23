@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (time() - $_SESSION["time"] < 600) {
+    $_SESSION["time"] = time();
     require "../modelo/Consultas.php";
     $co = new Consultas();
 

@@ -6,6 +6,7 @@ $routes = [
     "/" => "controlador/login.php",
     "/mapa" => "controlador/mapa.php",
     "/inicio" => "controlador/inicio.php",
+    "/usuarios" => "controlador/usuarios.php",
     "/registro" => "controlador/registro.php",
     "/password" => "controlador/password.php",
     "/crear-puesto" => "controlador/crear-puesto.php",
