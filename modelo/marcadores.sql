@@ -25,19 +25,21 @@ CREATE TABLE IF NOT EXISTS `carteles` (
   `direccion` varchar(100) NOT NULL,
   `latitud` varchar(20) NOT NULL,
   `longitud` varchar(20) NOT NULL,
-  `archivo` varchar(100) NOT NULL,
-  `creador` int(8) DEFAULT NULL,
+  `archivo` varchar(100) DEFAULT NULL,
+  `responsable` varchar(50) DEFAULT NULL,
+  `tanda` int(2) NOT NULL,
   `estado` int(2) NOT NULL DEFAULT 1,
   `creacion` datetime NOT NULL,
   `modificacion` datetime NOT NULL,
   PRIMARY KEY (`id_cartel`) USING BTREE,
-  KEY `fk_creador_cartel` (`creador`),
   KEY `fk_estado_cartel` (`estado`),
-  CONSTRAINT `fk_creador_cartel` FOREIGN KEY (`creador`) REFERENCES `usuarios` (`dni`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `fk_estado_cartel` FOREIGN KEY (`estado`) REFERENCES `estado_marcador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla marcadores.carteles: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla marcadores.carteles: ~1 rows (aproximadamente)
+INSERT INTO `carteles` (`id_cartel`, `direccion`, `latitud`, `longitud`, `archivo`, `responsable`, `tanda`, `estado`, `creacion`, `modificacion`) VALUES
+  (1, 'Plaza Independencia', '-32.88967672451535', '-68.8448381518724', NULL, NULL, 1, 1, '2023-06-26 13:17:40', '2023-06-26 13:17:41');
+
 
 -- Volcando estructura para tabla marcadores.puestos
 CREATE TABLE IF NOT EXISTS `puestos` (

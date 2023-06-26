@@ -32,7 +32,8 @@
                 foreach ($marcadores as $marcador) {
                 ?>
                     var marker = L.marker([<?= $marcador["latitud"] ?>, <?= $marcador["longitud"] ?>]).addTo(map);
-                    marker.bindPopup("<?= $marcador["direccion"] ?>");
+                    var popup = "<b>Dirección:</b> <?= $marcador["direccion"] ?><br><b>Encargado:</b> <?= $marcador["responsable"] ?><br><b>Tanda:</b> <?= $marcador["tanda"] ?>";
+                    marker.bindPopup(popup);
                 <?php
                 }
                 ?>
