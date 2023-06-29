@@ -109,10 +109,11 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
   PRIMARY KEY (`id_tipo_usuario`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla marcadores.tipo_usuario: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla marcadores.tipo_usuario: ~3 rows (aproximadamente)
 INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo`) VALUES
 	(1, 'Administrador'),
-	(2, 'Usuario');
+	(2, 'Usuario'),
+  (3, 'Consulta');
 
 -- Volcando estructura para tabla marcadores.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (

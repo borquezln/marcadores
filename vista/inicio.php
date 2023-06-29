@@ -29,19 +29,23 @@
         <?php
             unset($_SESSION["creadoErr"]);
         }
+
+        if ($_SESSION["tipoUsuario"] != 3) {
         ?>
+            <h3><a href="../controlador/crear-cartel.php">Crear cartel</a></h3>
 
-        <h3><a href="../controlador/crear-cartel.php">Crear cartel</a></h3>
-
-        <h3><a href="../controlador/crear-puesto.php">Crear puesto</a></h3>
-
-        <?php
-        if ($_SESSION["tipoUsuario"] == 1) {
-        ?>
-            <h3><a href="../controlador/usuarios.php">Administración de usuarios</a></h3>
-
+            <h3><a href="../controlador/crear-local.php">Crear punto fijo</a></h3>
+            <?php
+            if ($_SESSION["tipoUsuario"] == 1) {
+            ?>
+                <h3><a href="../controlador/usuarios.php">Administración de usuarios</a></h3>
+            <?php
+            }
+        }
+        if ($_SESSION["tipoUsuario"] != 2) {
+            ?>
             <form method="post" action="../controlador/mapa.php">
-                <h3>Elegir tipo de mapa</h3>
+                <h3>Elija el mapa que desea ver:</h3>
                 <select name="categoria" required>
                     <option value="" selected>Seleccione...</option>
                     <?php

@@ -1,24 +1,32 @@
 # Marcadores (ES)
 Este sistema ha sido diseñado para crear marcadores en una base de datos que luego serán mostrados sobre un mapa centrado en un punto en particular.
 
-Los usuarios del sistema pueden crear dos tipos de marcadores distintos desde formularios que impactan en tablas distintas de la base de datos. El formulario solicita al usuario la dirección, solicita la ubicación del navegador y permite subir una foto del marcador para ser guardada en el sistema.
+El sistema cuenta con tres tipos de usuarios: Usuarios comunes, Usuarios de consulta y Administradores.
+
+Desde el panel de inicio se pueden crear dos tipos de marcadores distintos desde formularios que impactan en tablas distintas de la base de datos. El formulario solicita al usuario la dirección, solicita la ubicación del navegador y permite subir una foto del marcador para ser guardada en el sistema.
 
 Por su parte, el mapa puede mostrar tres tipos de marcadores, siendo posible crear el tercero de ellos únicamente desde la base de datos. La categoría a mostrar se elige desde el panel de usuario después de iniciar sesión. 
 
-Además hay también una página para la administración de usuarios que permite activar cuentas recientemente registradas, resetear contraseñas y transformar usuarios comunes en administradores. El mapa y la administración de usuarios se encuentran visible solamente para administradores.
+Además hay también una página para la administración de usuarios que permite activar cuentas recientemente registradas, resetear contraseñas y transformar usuarios comunes en administradores.
 
-Además del formulario de inicio de sesión, el sistema cuenta con un formulario de registro, un formulario para solicitar el reinicio de la contraseña y un cierre de sesión por inactividad.
+Los usuarios comunes tienen acceso solamente a los formularios, los usuarios de consulta tienen acceso solamente al mapa y los administradores pueden acceder a todas las áreas.
+
+El sistema cuenta con un formulario de registro, un formulario para solicitar el reinicio de la contraseña y un cierre de sesión por inactividad.
 
 # Markers (EN)
 This app has been developed to create markers in a database that will then be displayed on a map centered on a particular point.
 
-Users can create two different types of markers from forms that impact different tables in the database. The form asks the user for the address, requests the location of the browser and allows uploading a photo of the marker to be saved in the system.
+The system has three types of users: Regular users, Consultation users and Administrators.
+
+From the dashboard it can create two different types of markers from forms that impact different tables in the database. The form asks the user for the address, requests the location of the browser and allows uploading a photo of the marker to be saved in the system.
 
 For its part, the map can show three types of markers, and it is possible to create the third one only from the database. The category to display is chosen from the user panel after logging in.
 
 Also, there is also a page for user management that allows to activate newly accounts, reset passwords and turn a regular user into an admin.
 
-In addition to the login form, the system has a registration form, a password reset request form, and a logout for inactivity.
+Regular users have access only to the forms, Consultation users have access only to the map, and Admins can access all areas.
+
+The system has a registration form, a password reset request form, and a logout for inactivity.
 
 # Tecnologías / Tech:
 * <b>Front-end:</b> HTML
