@@ -6,8 +6,24 @@ if (time() - $_SESSION["time"] < 600) {
     $co = new Consultas;
 
     if ($_SESSION["tipoUsuario"] != 2) {
+        $listMapas = [
+            "carteles" => "Carteles",
+            "locales" => "Locales",
+            "puestos" => "Puestos"
+        ];
+
         $categoria = $_POST["categoria"];
         $marcadores = $co->listarMarcadores($categoria);
+
+        $total = $co->contadorTotal($categoria);
+
+        if ($categoria == "carteles") {
+            $tandas = $co->contadorUnicos($categoria, "tanda");
+            $porTanda = [];
+            for ($i = 1; $i <= $tandas; $i++) {
+                $porTanda[$i-1] = $co->contadorPorValor($categoria, "tanda", $i);
+            }
+        }
         require "../vista/mapa.php";
     } else {
         header("Location: 403.php");

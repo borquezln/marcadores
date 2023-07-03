@@ -49,13 +49,14 @@ CREATE TABLE IF NOT EXISTS `puestos` (
   `latitud` varchar(20) NOT NULL,
   `longitud` varchar(20) NOT NULL,
   `mesas` int(2) NOT NULL,
-  `encargado` int(8) NOT NULL,
-  PRIMARY KEY (`nro_puesto`),
-  KEY `fk_encargado_puesto` (`encargado`),
-  CONSTRAINT `fk_encargado_puesto` FOREIGN KEY (`encargado`) REFERENCES `usuarios` (`dni`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+  `encargado` varchar(50) DEFAULT '',
+  PRIMARY KEY (`nro_puesto`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- Volcando datos para la tabla marcadores.puestos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla marcadores.puestos: ~2 rows (aproximadamente)
+INSERT INTO `puestos` (`nro_puesto`, `nombre`, `direccion`, `latitud`, `longitud`, `mesas`, `encargado`) VALUES
+  (1, 'Parque Central', 'Pellegrini y Peru', '-32.87332958816762', '-68.84275324760566', 5, 'Encargado 1'),
+  (2, 'Parque Cívico', 'Peltier y España', '-32.89874557778811', '-68.84496149568838', 3, 'Encargado 2');
 
 -- Volcando estructura para tabla marcadores.estado_marcador
 CREATE TABLE IF NOT EXISTS `estado_marcador` (
@@ -88,32 +89,30 @@ CREATE TABLE IF NOT EXISTS `locales` (
   `direccion` varchar(100) NOT NULL,
   `latitud` varchar(20) NOT NULL,
   `longitud` varchar(20) NOT NULL,
-  `archivo` varchar(100) NOT NULL,
-  `creador` int(8) DEFAULT NULL,
-  `estado` int(2) NOT NULL DEFAULT 1,
+  `distrito` varchar(50) NOT NULL,
   `creacion` datetime NOT NULL,
   `modificacion` datetime NOT NULL,
-  PRIMARY KEY (`id_local`) USING BTREE,
-  KEY `fk_creador_local` (`creador`),
-  KEY `fk_estado_local` (`estado`),
-  CONSTRAINT `fk_creador_local` FOREIGN KEY (`creador`) REFERENCES `usuarios` (`dni`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_estado_local` FOREIGN KEY (`estado`) REFERENCES `estado_marcador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id_local`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla marcadores.locales: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla marcadores.locales: ~3 rows (aproximadamente)
+INSERT INTO `locales` (`id_local`, `direccion`, `latitud`, `longitud`, `distrito`, `creacion`, `modificacion`) VALUES
+  (1, 'Patricias Mendocinas y Peatonal', '-32.889945748586534', '-68.84319928436436', 'Mendoza', '2023-07-03 11:09:52', '2023-07-03 11:09:53'),
+  (2, 'Colon y Rivadavia', '-32.92444497256289', '-68.84484762576788', 'Godoy Cruz', '2023-07-03 11:10:40', '2023-07-03 11:10:42'),
+  (3, 'San Miguel y Belgrano', '-32.849846753977594', '-68.8413697381936', 'Las Heras', '2023-07-03 11:11:21', '2023-07-03 11:11:23');
 
 -- Volcando estructura para tabla marcadores.tipo_usuario
 CREATE TABLE IF NOT EXISTS `tipo_usuario` (
   `id_tipo_usuario` int(2) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(20) NOT NULL,
   PRIMARY KEY (`id_tipo_usuario`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla marcadores.tipo_usuario: ~3 rows (aproximadamente)
 INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo`) VALUES
 	(1, 'Administrador'),
 	(2, 'Usuario'),
-  (3, 'Consulta');
+	(3, 'Consulta');
 
 -- Volcando estructura para tabla marcadores.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -125,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `inicio_sesion` datetime DEFAULT NULL,
   `tipo_usuario` int(2) NOT NULL DEFAULT 2,
   `estado_usuario` int(2) NOT NULL DEFAULT 2,
-  `estado_password` varchar(50) NOT NULL,
+  `estado_password` varchar(50) NOT NULL DEFAULT 'Activa',
   PRIMARY KEY (`dni`),
   KEY `fk_tipo_usuario` (`tipo_usuario`),
   KEY `fk_estado_usuario` (`estado_usuario`),

@@ -5,8 +5,12 @@ if (time() - $_SESSION["time"] < 600) {
     require "../modelo/Consultas.php";
     $co = new Consultas;
 
-    $listaUsuarios = $co->listarUsuarios();
-    require "../vista/usuarios.php";
+    if ($_SESSION["tipoUsuario"] == 1) {
+        $listaUsuarios = $co->listarUsuarios();
+        require "../vista/usuarios.php";
+    } else {
+        header("Location: 403.php");
+    }
 } else {
     header("Location: sesion-vencida.php");
 }

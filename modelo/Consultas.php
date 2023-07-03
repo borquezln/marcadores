@@ -184,4 +184,50 @@ class Consultas extends Conexion
             $e->getMessage();
         }
     }
+
+    // CONTADORES
+    public function contadorTotal($marcador)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "SELECT count(*) AS total FROM {$marcador}";
+            $result = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $total = $row["total"];
+            }
+            return $total;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function contadorUnicos($tabla, $columna)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "SELECT count(DISTINCT $columna) AS total FROM {$tabla}";
+            $result = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $total = $row["total"];
+            }
+            return $total;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function contadorPorValor($tabla, $columna, $valor)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "SELECT count(*) AS total FROM {$tabla} WHERE $columna = $valor";
+            $result = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $total = $row["total"];
+            }
+            return $total;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }

@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <h1>Mapa de <?= $categoria ?></h1>
+        <h1>Mapa de <?= $listMapas[$categoria] ?></h1>
     </header>
     <main>
         <div id="map">
@@ -32,13 +32,40 @@
                 foreach ($marcadores as $marcador) {
                 ?>
                     var marker = L.marker([<?= $marcador["latitud"] ?>, <?= $marcador["longitud"] ?>]).addTo(map);
-                    var popup = "<b>Dirección:</b> <?= $marcador["direccion"] ?><br><b>Encargado:</b> <?= $marcador["responsable"] ?><br><b>Tanda:</b> <?= $marcador["tanda"] ?>";
+                    <?php
+                    if ($categoria == "carteles") {
+                    ?>
+                        var popup = "<b>Dirección:</b> <?= $marcador["direccion"] ?><br><b>Encargado:</b> <?= $marcador["responsable"] ?><br><b>Tanda:</b> <?= $marcador["tanda"] ?>";
+                    <?php
+                    } else if ($categoria == "locales") {
+                    ?>
+                        var popup = "<b>Distrito:</b> <?= $marcador["distrito"] ?><br><b>Dirección:</b> <?= $marcador["direccion"] ?>";
+                    <?php
+                    } else {
+                    ?>
+                        var popup = "<b>Nombre:</b> <?= $marcador["nombre"] ?><br><b>Dirección:</b> <?= $marcador["direccion"] ?><br><b>Encargado:</b> <?= $marcador["encargado"] ?>";
+                    <?php
+                    }
+                    ?>
                     marker.bindPopup(popup);
                 <?php
                 }
                 ?>
             </script>
         </div>
+        <section>
+            <h2>Totales:</h2>
+            <p>Total de <?= $listMapas[$categoria] ?>: <?= $total ?></p>
+            <?php
+            if ($categoria == "carteles") {
+                foreach (array_keys($porTanda) as $tanda) {
+            ?>
+                    <p>Total de tanda <?= $tanda + 1 ?>: <?= $porTanda[$tanda] ?></p>
+            <?php
+                }
+            }
+            ?>
+        </section>
     </main>
 </body>
 
