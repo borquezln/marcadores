@@ -23,7 +23,12 @@
     <main>
         <div id="map">
             <script>
-                var map = L.map('map').setView([-32.88967672451535, -68.8448381518724], 14);
+                var chincheta = L.icon({
+                    iconUrl: '../img/<?= $categoria ?>.png',
+                    iconSize: [27, 41]
+                });
+
+                var map = L.map('map').setView([-32.88967672451535, -68.8448381518724], 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                     maxZoom: 18,
@@ -31,7 +36,7 @@
                 <?php
                 foreach ($marcadores as $marcador) {
                 ?>
-                    var marker = L.marker([<?= $marcador["latitud"] ?>, <?= $marcador["longitud"] ?>]).addTo(map);
+                    var marker = L.marker([<?= $marcador["latitud"] ?>, <?= $marcador["longitud"] ?>], {icon: chincheta}).addTo(map);
                     <?php
                     if ($categoria == "carteles") {
                     ?>
