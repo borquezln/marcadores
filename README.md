@@ -48,3 +48,5 @@ The system has a registration form, a password reset request form, and a logout 
 <img src="screenshots/sshot06.png" width="50%">
 <br><br>
 <img src="screenshots/sshot07.png" width="50%">
+<br><br>
+<img src="screenshots/sshot08.png" width="50%">

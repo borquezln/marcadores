@@ -33,39 +33,52 @@
                     attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                     maxZoom: 18,
                 }).addTo(map);
+
                 <?php
                 foreach ($marcadores as $marcador) {
                 ?>
-                    var marker = L.marker([<?= $marcador["latitud"] ?>, <?= $marcador["longitud"] ?>], {icon: chincheta}).addTo(map);
+                    var marker = L.marker([<?= $marcador["latitud"] ?>, <?= $marcador["longitud"] ?>], {
+                        icon: chincheta
+                    }).addTo(map);
+
+                    var direccion = "<b>Dirección:</b> <?= $marcador["direccion"] ?>";
                     <?php
                     if ($categoria == "carteles") {
                     ?>
-                        var popup = "<b>Dirección:</b> <?= $marcador["direccion"] ?><br><b>Encargado:</b> <?= $marcador["responsable"] ?><br><b>Tanda:</b> <?= $marcador["tanda"] ?>";
+                        var popup = direccion + "<br><b>Encargado:</b> <?= $marcador["responsable"] ?><br><b>Tanda:</b> <?= $marcador["tanda"] ?>";
                     <?php
                     } else if ($categoria == "locales") {
                     ?>
-                        var popup = "<b>Distrito:</b> <?= $marcador["distrito"] ?><br><b>Dirección:</b> <?= $marcador["direccion"] ?>";
+                        var popup = "<b>Distrito:</b> <?= $marcador["distrito"] ?><br>" + direccion;
                     <?php
                     } else {
                     ?>
-                        var popup = "<b>Nombre:</b> <?= $marcador["nombre"] ?><br><b>Dirección:</b> <?= $marcador["direccion"] ?><br><b>Encargado:</b> <?= $marcador["encargado"] ?>";
+                        var popup = '<b>Nombre:</b> <?= $marcador["nombre"] ?><br>' + direccion + '<br><a href="../controlador/puesto.php?<?= $marcador["nro_puesto"] ?>" target="_blank">Más información</a>';
                     <?php
                     }
                     ?>
+
                     marker.bindPopup(popup);
                 <?php
                 }
                 ?>
             </script>
         </div>
+
         <section>
             <h2>Totales:</h2>
-            <p>Total de <?= $listMapas[$categoria] ?>: <?= $total ?></p>
+            <h4>Total de <?= $listMapas[$categoria] ?>: <?= $total ?></h4>
             <?php
             if ($categoria == "carteles") {
                 foreach (array_keys($porTanda) as $tanda) {
             ?>
                     <p>Total de tanda <?= $tanda + 1 ?>: <?= $porTanda[$tanda] ?></p>
+                <?php
+                }
+            } else if ($categoria == "locales") {
+                foreach ($distritos as $distrito) {
+                ?>
+                    <p>Total en <?= $distrito ?>: <?= $porDistrito[$distrito] ?></p>
             <?php
                 }
             }

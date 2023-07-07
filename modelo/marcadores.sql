@@ -40,23 +40,37 @@ CREATE TABLE IF NOT EXISTS `carteles` (
 INSERT INTO `carteles` (`id_cartel`, `direccion`, `latitud`, `longitud`, `archivo`, `responsable`, `tanda`, `estado`, `creacion`, `modificacion`) VALUES
   (1, 'Plaza Independencia', '-32.88967672451535', '-68.8448381518724', NULL, NULL, 1, 1, '2023-06-26 13:17:40', '2023-06-26 13:17:41');
 
+-- Volcando estructura para tabla marcadores.encargados
+CREATE TABLE IF NOT EXISTS `encargados` (
+  `nombre` varchar(50) NOT NULL DEFAULT '',
+  `celular` int(10) unsigned DEFAULT NULL,
+  `puesto` varchar(6) NOT NULL DEFAULT '',
+  KEY `fk_encargado_puesto` (`puesto`),
+  CONSTRAINT `fk_encargado_puesto` FOREIGN KEY (`puesto`) REFERENCES `puestos` (`nro_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla marcadores.encargados: ~3 rows (aproximadamente)
+INSERT INTO `encargados` (`nombre`, `celular`, `puesto`) VALUES
+  ('Encargado 1', 2611111111, 'MenCe1'),
+  ('Encargado 2', 2618888888, 'MenCi1'),
+  ('Encargado 3', 2619999999, 'MenCe1');
+
 
 -- Volcando estructura para tabla marcadores.puestos
 CREATE TABLE IF NOT EXISTS `puestos` (
-  `nro_puesto` int(4) NOT NULL,
+  `nro_puesto` varchar(6) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `latitud` varchar(20) NOT NULL,
   `longitud` varchar(20) NOT NULL,
   `mesas` int(2) NOT NULL,
-  `encargado` varchar(50) DEFAULT '',
   PRIMARY KEY (`nro_puesto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- Volcando datos para la tabla marcadores.puestos: ~2 rows (aproximadamente)
-INSERT INTO `puestos` (`nro_puesto`, `nombre`, `direccion`, `latitud`, `longitud`, `mesas`, `encargado`) VALUES
-  (1, 'Parque Central', 'Pellegrini y Peru', '-32.87332958816762', '-68.84275324760566', 5, 'Encargado 1'),
-  (2, 'Parque Cívico', 'Peltier y España', '-32.89874557778811', '-68.84496149568838', 3, 'Encargado 2');
+INSERT INTO `puestos` (`nro_puesto`, `nombre`, `direccion`, `latitud`, `longitud`, `mesas`) VALUES
+  ('MenCe1', 'Parque Central', 'Pellegrini y Peru', '-32.87332958816762', '-68.84275324760566', 5),
+  ('MenCi1', 'Parque Cívico', 'Peltier y España', '-32.89874557778811', '-68.84496149568838', 3);
 
 -- Volcando estructura para tabla marcadores.estado_marcador
 CREATE TABLE IF NOT EXISTS `estado_marcador` (

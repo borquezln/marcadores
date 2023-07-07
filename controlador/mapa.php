@@ -23,7 +23,14 @@ if (time() - $_SESSION["time"] < 600) {
             for ($i = 1; $i <= $tandas; $i++) {
                 $porTanda[$i-1] = $co->contadorPorValor($categoria, "tanda", $i);
             }
+        } else if ($categoria == "locales") {
+            $distritos = $co->unicos($categoria, "distrito");
+            $porDistrito = [];
+            foreach($distritos as $distrito) {
+                $porDistrito[$distrito] = $co->contadorPorValor($categoria, "distrito", $distrito);
+            }
         }
+
         require "../vista/mapa.php";
     } else {
         header("Location: 403.php");

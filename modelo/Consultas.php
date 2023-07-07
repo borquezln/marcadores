@@ -185,7 +185,7 @@ class Consultas extends Conexion
         }
     }
 
-    // CONTADORES
+    // CONTADORES Y UNICOS
     public function contadorTotal($marcador)
     {
         try {
@@ -226,6 +226,45 @@ class Consultas extends Conexion
                 $total = $row["total"];
             }
             return $total;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function unicos($tabla, $columna)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "SELECT DISTINCT {$columna} FROM {$tabla} ORDER BY {$columna} ASC";
+            $result = mysqli_query($link, $sql);
+            $lista = [];
+            $i = 0;
+            while ($registro = mysqli_fetch_assoc($result)) {
+                $lista[$i] = $registro["distrito"];
+                $i += 1;
+            }
+            return $lista;
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    // PUESTO
+    public function datosPuesto($puesto)
+    {
+        try {
+            $link = parent::conexionBD();
+            $sql = "SELECT p.nro_puesto, p.nombre AS nombre_p, p.direccion as mesas, e.nombre as nombre_e, e.celular
+                    FROM puestos p, encargados e
+                    WHERE p.nro_puesto = '$puesto' AND p.nro_puesto = e.puesto";
+            $result = mysqli_query($link, $sql);
+            $lista = [];
+            $i = 0;
+            while ($registro = mysqli_fetch_assoc($result)) {
+                $lista[$i] = $registro;
+                $i += 1;
+            }
+            return $lista;
         } catch (Exception $e) {
             $e->getMessage();
         }
